@@ -18,101 +18,108 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 50px 20px;
+            padding: 60px 20px;
         }
 
-        /* 팟 영역 */
+        /* 팟 영역: 오직 텍스트로만 */
         .pot-section {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .pot-section .label {
-            font-size: 12px;
-            letter-spacing: 2px;
-            color: #888;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #999;
         }
 
         .pot-section .value {
-            font-size: 48px;
-            font-weight: 300;
+            font-size: 54px;
+            font-weight: 200;
         }
 
-        /* 그리드 레이아웃 */
+        /* 플레이어 그리드 */
         .grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            max-width: 400px;
+            gap: 40px 30px;
+            max-width: 360px;
             width: 100%;
         }
 
-        /* 플레이어 카드 */
         .card {
             text-align: center;
-            padding: 10px;
         }
 
         .name {
-            font-size: 14px;
-            font-weight: bold;
-            color: #555;
+            font-size: 12px;
+            color: #888;
+            letter-spacing: 1px;
         }
 
         .chips {
-            font-size: 32px;
-            font-weight: 300;
-            margin: 10px 0 15px 0;
+            font-size: 36px;
+            font-weight: 200;
+            margin: 5px 0 15px 0;
         }
 
-        /* 입력창 & 베팅 가로 정렬 */
+        /* 컨트롤 영역: 선과 배경 최소화 */
         .row {
             display: flex;
-            gap: 5px;
-            margin-bottom: 5px;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 8px;
         }
 
         input {
-            width: 60%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            width: 60px;
+            padding: 5px 0;
+            border: none;
+            border-bottom: 1px solid #ddd;
             text-align: center;
             font-size: 14px;
+            outline: none;
         }
 
+        input:focus {
+            border-bottom-color: #000;
+        }
+
+        /* 버튼: 배경색 제거, 텍스트로만 기능 수행 */
         button {
-            width: 40%;
-            padding: 8px;
-            background: #000;
-            color: #fff;
+            background: none;
             border: none;
-            border-radius: 4px;
             font-size: 13px;
-            cursor: pointer;
-        }
-
-        /* 승리 버튼 (테두리만 있는 스타일) */
-        button.win {
-            width: 100%;
-            background: transparent;
             color: #000;
-            border: 1px solid #000;
+            cursor: pointer;
+            padding: 5px;
         }
 
         button:hover {
-            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        button.win {
+            display: block;
+            width: 100%;
+            color: #888;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        button.win:hover {
+            color: #000;
         }
 
         /* 리셋 버튼 */
         .reset {
-            margin-top: 50px;
-            background: transparent;
-            color: #aaa;
-            border: none;
-            width: auto;
-            font-size: 12px;
-            text-decoration: underline;
+            margin-top: 60px;
+            color: #ccc;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+        .reset:hover {
+            color: #999;
         }
     </style>
 </head>
@@ -165,7 +172,7 @@
         </div>
     </div>
 
-    <button class="reset" onclick="resetGame()">리셋</button>
+    <button class="reset" onclick="resetGame()">RESET</button>
 
     <script>
         let pot = 0;
