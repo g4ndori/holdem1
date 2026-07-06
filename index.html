@@ -3,65 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poker Chip Counter</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Counter</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        body {
+            background: #fff;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        /* 팟 영역 */
+        .pot-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .pot-section .label {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #888;
+        }
+
+        .pot-section .value {
+            font-size: 48px;
+            font-weight: 300;
+        }
+
+        /* 그리드 레이아웃 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* 플레이어 카드 */
+        .card {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .chips {
+            font-size: 32px;
+            font-weight: 300;
+            margin: 10px 0 15px 0;
+        }
+
+        /* 입력창 & 베팅 가로 정렬 */
+        .row {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 60%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        button {
+            width: 40%;
+            padding: 8px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        /* 승리 버튼 (테두리만 있는 스타일) */
+        button.win {
+            width: 100%;
+            background: transparent;
+            color: #000;
+            border: 1px solid #000;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* 리셋 버튼 */
+        .reset {
+            margin-top: 50px;
+            background: transparent;
+            color: #aaa;
+            border: none;
+            width: auto;
+            font-size: 12px;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <h1>Chip Counter</h1>
-        <h2>made by Changeon</h2>
-        <div id="pot-container">
-            POT: <span id="pot">0</span> 🪙
-        </div>
-    </header>
+    <div class="pot-section">
+        <div class="label">POT</div>
+        <div id="pot" class="value">0</div>
+    </div>
 
-    <main class="players">
-        <div class="player">
-            <h2>플레이어 1</h2>
-            <p class="chip-count"><span id="chips1">5000</span></p>
-            <div class="controls">
-                <input type="number" id="bet1" value="100" min="1">
-                <button class="btn bet-btn" onclick="bet(1)">베팅</button>
+    <div class="grid">
+        <div class="card">
+            <div class="name">P1</div>
+            <div id="chips1" class="chips">5000</div>
+            <div class="row">
+                <input type="number" id="bet1" value="100">
+                <button onclick="bet(1)">베팅</button>
             </div>
-            <button class="btn win-btn" onclick="winner(1)">승리</button>
+            <button class="win" onclick="winner(1)">승리</button>
         </div>
 
-        <div class="player">
-            <h2>플레이어 2</h2>
-            <p class="chip-count"><span id="chips2">5000</span></p>
-            <div class="controls">
-                <input type="number" id="bet2" value="100" min="1">
-                <button class="btn bet-btn" onclick="bet(2)">베팅</button>
+        <div class="card">
+            <div class="name">P2</div>
+            <div id="chips2" class="chips">5000</div>
+            <div class="row">
+                <input type="number" id="bet2" value="100">
+                <button onclick="bet(2)">베팅</button>
             </div>
-            <button class="btn win-btn" onclick="winner(2)">승리</button>
+            <button class="win" onclick="winner(2)">승리</button>
         </div>
 
-        <div class="player">
-            <h2>플레이어 3</h2>
-            <p class="chip-count"><span id="chips3">5000</span></p>
-            <div class="controls">
-                <input type="number" id="bet3" value="100" min="1">
-                <button class="btn bet-btn" onclick="bet(3)">베팅</button>
+        <div class="card">
+            <div class="name">P3</div>
+            <div id="chips3" class="chips">5000</div>
+            <div class="row">
+                <input type="number" id="bet3" value="100">
+                <button onclick="bet(3)">베팅</button>
             </div>
-            <button class="btn win-btn" onclick="winner(3)">승리</button>
+            <button class="win" onclick="winner(3)">승리</button>
         </div>
 
-        <div class="player">
-            <h2>플레이어 4</h2>
-            <p class="chip-count"><span id="chips4">5000</span></p>
-            <div class="controls">
-                <input type="number" id="bet4" value="100" min="1">
-                <button class="btn bet-btn" onclick="bet(4)">베팅</button>
+        <div class="card">
+            <div class="name">P4</div>
+            <div id="chips4" class="chips">5000</div>
+            <div class="row">
+                <input type="number" id="bet4" value="100">
+                <button onclick="bet(4)">베팅</button>
             </div>
-            <button class="btn win-btn" onclick="winner(4)">승리</button>
+            <button class="win" onclick="winner(4)">승리</button>
         </div>
-    </main>
+    </div>
 
-    <footer>
-        <button class="btn reset-btn" onclick="resetGame()">게임 리셋</button>
-    </footer>
+    <button class="reset" onclick="resetGame()">리셋</button>
 
-    <script src="script.js"></script>
+    <script>
+        let pot = 0;
+        let chips = { 1: 5000, 2: 5000, 3: 5000, 4: 5000 };
+
+        function bet(player) {
+            const amount = parseInt(document.getElementById("bet" + player).value);
+
+            if (isNaN(amount) || amount <= 0 || amount > chips[player]) {
+                alert("금액 오류");
+                return;
+            }
+
+            chips[player] -= amount;
+            pot += amount;
+
+            document.getElementById("chips" + player).textContent = chips[player];
+            document.getElementById("pot").textContent = pot;
+        }
+
+        function winner(player) {
+            if (pot <= 0) return;
+
+            chips[player] += pot;
+            pot = 0;
+
+            document.getElementById("chips" + player).textContent = chips[player];
+            document.getElementById("pot").textContent = pot;
+        }
+
+        function resetGame() {
+            if (!confirm("리셋할까요?")) return;
+
+            for (let i = 1; i <= 4; i++) {
+                chips[i] = 5000;
+                document.getElementById("chips" + i).textContent = 5000;
+                document.getElementById("bet" + i).value = 100;
+            }
+            pot = 0;
+            document.getElementById("pot").textContent = 0;
+        }
+    </script>
 </body>
 </html>
