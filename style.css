@@ -1,135 +1,109 @@
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #f8f9fa;
-    color: #212529;
+* {
+    box-sizing: border-box;
     margin: 0;
-    padding: 40px 20px;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background: #fff;
+    color: #000;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 50px 20px;
 }
 
-header {
+/* 팟 영역 */
+.pot-section {
     text-align: center;
     margin-bottom: 40px;
 }
 
-h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    color: #1a1a1a;
+.pot-section .label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #888;
 }
 
-#pot-container {
-    font-size: 1.5rem;
-    font-weight: 700;
-    background: #1a1a1a;
-    color: #fff;
-    padding: 12px 30px;
-    border-radius: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: inline-block;
+.pot-section .value {
+    font-size: 48px;
+    font-weight: 300;
 }
 
-.players {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    max-width: 1000px;
+/* 그리드 레이아웃 */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 400px;
     width: 100%;
 }
 
-.player {
-    background: #ffffff;
-    border: 1px solid #e9ecef;
-    border-radius: 16px;
-    padding: 24px;
-    width: 200px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+/* 플레이어 카드 */
+.card {
     text-align: center;
-    transition: transform 0.2s;
-}
-
-.player:hover {
-    transform: translateY(-2px);
-}
-
-.player h2 {
-    font-size: 1.1rem;
-    color: #6c757d;
-    margin: 0 0 10px 0;
-}
-
-.chip-count {
-    font-size: 2rem;
-    font-weight: 800;
-    margin: 0 0 20px 0;
-    color: #212529;
-}
-
-.controls {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 10px;
-}
-
-input[type="number"] {
-    flex: 1;
     padding: 10px;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    font-size: 1rem;
+}
+
+.name {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+}
+
+.chips {
+    font-size: 32px;
+    font-weight: 300;
+    margin: 10px 0 15px 0;
+}
+
+/* 입력창 & 베팅 가로 정렬 */
+.row {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     text-align: center;
-    outline: none;
+    font-size: 14px;
 }
 
-input[type="number"]:focus {
-    border-color: #1a1a1a;
-}
-
-.btn {
-    font-size: 0.95rem;
-    font-weight: 600;
+button {
+    width: 40%;
+    padding: 8px;
+    background: #000;
+    color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
+    font-size: 13px;
     cursor: pointer;
-    transition: background 0.2s;
 }
 
-.bet-btn {
-    background: #1a1a1a;
-    color: white;
-    padding: 10px 16px;
-}
-
-.bet-btn:hover {
-    background: #333333;
-}
-
-.win-btn {
+/* 승리 버튼 (테두리만 있는 스타일) */
+button.win {
     width: 100%;
-    padding: 12px;
-    background: #e7f5ff;
-    color: #007bc2;
+    background: transparent;
+    color: #000;
+    border: 1px solid #000;
 }
 
-.win-btn:hover {
-    background: #d0ebff;
+button:hover {
+    opacity: 0.8;
 }
 
-footer {
-    margin-top: 40px;
-}
-
-.reset-btn {
-    background: #fff;
-    color: #fa5252;
-    border: 1px solid #ffe3e3;
-    padding: 12px 30px;
-    border-radius: 25px;
-}
-
-.reset-btn:hover {
-    background: #fff5f5;
+/* 리셋 버튼 */
+.reset {
+    margin-top: 50px;
+    background: transparent;
+    color: #aaa;
+    border: none;
+    width: auto;
+    font-size: 12px;
+    text-decoration: underline;
 }
