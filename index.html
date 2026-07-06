@@ -21,7 +21,6 @@
             padding: 60px 20px;
         }
 
-        /* 팟 영역: 오직 텍스트로만 */
         .pot-section {
             text-align: center;
             margin-bottom: 50px;
@@ -38,7 +37,6 @@
             font-weight: 200;
         }
 
-        /* 플레이어 그리드 */
         .grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -63,7 +61,6 @@
             margin: 5px 0 15px 0;
         }
 
-        /* 컨트롤 영역: 선과 배경 최소화 */
         .row {
             display: flex;
             justify-content: center;
@@ -85,7 +82,6 @@
             border-bottom-color: #000;
         }
 
-        /* 버튼: 배경색 제거, 텍스트로만 기능 수행 */
         button {
             background: none;
             border: none;
@@ -111,10 +107,9 @@
             color: #000;
         }
 
-        /* 리셋 버튼 */
         .reset {
             margin-top: 60px;
-            color: #ccc;
+            color: red;
             font-size: 11px;
             letter-spacing: 1px;
         }
@@ -202,9 +197,10 @@
             document.getElementById("chips" + player).textContent = chips[player];
             document.getElementById("pot").textContent = pot;
         }
+        
 
         function resetGame() {
-            if (!confirm("리셋할까요?")) return;
+            if (!confirm("Wanna Reset?")) return;
 
             for (let i = 1; i <= 4; i++) {
                 chips[i] = 5000;
